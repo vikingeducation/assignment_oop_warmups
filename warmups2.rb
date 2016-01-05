@@ -1,20 +1,31 @@
 
 
 class Array
-    
-    def is_array (obj)
-        obj.class == Array
+  def deep_dup
+    new_arr = []
+    self.each_with_index do |elem, index|
+      if elem.is_a?(Array)
+        new_arr << elem.deep_dup
+      else
+        new_arr << elem
+      end
     end
-
-    def deep_dup
-
-
-    end
+    new_arr
+  end
 end
 
+def recursive_id(obj)
+  obj.each_with_index do |elem, index|
+    if elem.is_a?(Array)
+      recursive_id(elem)
+    else
+      puts elem.object_id
+    end
+  end
+end
 
-x = 5
+arr = [[1,2,3],[4,5,6,[2]]]
+recursive_id(arr)
 
-Array.is_array(x)
-
-x.is_array?
+arr_dup = arr.deep_dup
+recursive_id(arr_dup)
