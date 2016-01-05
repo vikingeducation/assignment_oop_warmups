@@ -1,16 +1,20 @@
 class Array
 
-  def deep_dup(array)
+  def deep_dup
 
-    return 
-    result_arr = []
+    return self.dup
+    return self.deep_dup if self.is_a?(Array)
 
-    array.each do |ele|
-      deep_dup(ele) if ele.is_a?(Array)
-    end
   end
 end
 
+arr = [ [1, 2], [3, 4] ]
+arr2 = arr.deep_dup
+
+puts arr.object_id
+puts arr2.object_id
+puts arr[0].object_id
+puts arr2[0].object_id
 
 deeper_arr = [ 
                 [ 1, [ 2, 3 ] ], 
@@ -18,4 +22,3 @@ deeper_arr = [
                 [ [ 7, 8, [ 9, 10 ]], [11, 12] ], 
             ]
 
-puts deep_dup(deeper_arr)
