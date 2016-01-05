@@ -1,5 +1,3 @@
-
-
 class Array
   def deep_dup
     new_arr = []
@@ -17,9 +15,8 @@ end
 def recursive_id(obj)
   obj.each_with_index do |elem, index|
     if elem.is_a?(Array)
-      recursive_id(elem)
-    else
       puts elem.object_id
+      recursive_id(elem)
     end
   end
 end
