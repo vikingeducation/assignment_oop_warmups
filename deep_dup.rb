@@ -3,13 +3,14 @@ class Array
   def deep_dup
 
     result = []
-    arr = self.dup
 
-    arr.each do |ele|
-      result << ele.deep_dup if ele.is_a?(Array)
+    each do |ele|
+      if ele.is_a?(Array)
+        new_ele = ele.dup
+        result << new_ele.deep_dup
+      end
     end
-
-    return result
+    result
   end
 end
 
@@ -33,3 +34,5 @@ puts arr3.object_id
 puts deeper_arr.object_id
 puts arr3[1].object_id
 puts deeper_arr[1].object_id
+puts arr3[2][1].object_id
+puts deeper_arr[2][1].object_id
