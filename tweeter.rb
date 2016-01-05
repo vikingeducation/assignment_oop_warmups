@@ -8,8 +8,6 @@ class Tweeter
 
     def tweet(message)
     		@tweets << message[0..144]
-        # This should add the first 144 characters
-        # of any message to the @tweets array
     end
 
     def each(proc=nil)
