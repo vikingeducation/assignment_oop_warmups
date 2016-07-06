@@ -1,4 +1,5 @@
 class Tweeter
+    include Enumerable
     def initialize
         @tweets = []
     end
@@ -19,12 +20,3 @@ class Tweeter
         @tweets
     end 
 end
-
-=begin
-Instead of making an accessor for @tweets and accessing it directly from outside of the Tweeter instance, we can treat the Tweeter instance as a collection itself.
-
-To do so, your task is:
-
-    Define an each instance method on Tweeter which iterates through all the tweets inside its @tweets collection.
-    Include the Enumerable module into the Tweeter class.
-=end
