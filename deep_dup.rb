@@ -19,5 +19,5 @@ end
 
 weird_array = [ [1, 2, [2, 7, 8, [1, 2]]], [3, 4] ]
 
-p flatten_object_method(deep_dup(weird_array))
-p flatten_object_method(weird_array)
+p object_method(deep_dup(weird_array))
+p object_method(weird_array)
