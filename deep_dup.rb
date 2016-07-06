@@ -4,15 +4,14 @@ def deep_dup(arr)
             if x.is_a? Array
               deep_dup(x)
             else
-
+              y = x
             end
   end
 
 end
 
-def test
+def test (arr)
 
-  arr = [[1,2], [3,4]]
   duped_arr = deep_dup(arr)
 
   raise "Incorrect, objects are same" if arr.object_id == duped_arr.object_id
@@ -20,4 +19,5 @@ def test
 
 end
 
-test
+test([[1,2], [3,4]])
+test()
