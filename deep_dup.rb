@@ -23,15 +23,23 @@ def tester
                ]
 
   arr.object_id
-  object1 = arr[0].object_id
+  object1 = arr[1].object_id
   object2 = arr[1][1].object_id
+  object3=arr[3][0][2].object_id
 
   duper = arr.deep_dup
 
   duper.object_id
-  duper1 = duper[0].object_id
+  duper1 = duper[1].object_id
   duper2 = duper[1][1].object_id
+  duper3= duper[3][0][2].object_id
 
-puts "#{object1}"
-
+puts object1 !=duper1
+puts object2 !=duper2
+puts object3 !=duper3
+puts "Object1: #{object1} Duper1: #{duper1}"
+puts "Object2: #{object2} Duper2: #{duper2}"
+puts "Object3: #{object3} Duper3: #{duper3}"
 end
+
+tester
