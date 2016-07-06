@@ -14,9 +14,3 @@ class Array
   end
 end
 
-arr = [ [1, [1,2]], [3, 4] ]
-
-duper = arr.deep_dup_two
-
-puts arr[0][1].equal?(duper[0][1])
-
