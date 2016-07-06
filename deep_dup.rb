@@ -19,5 +19,5 @@ def test (arr)
 
 end
 
-test([[1,2], [3,4]])
-test()
+test([1,2, "d", ["d", "aaaa"], [3,4]])
+# test()
