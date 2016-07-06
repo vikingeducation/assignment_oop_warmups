@@ -4,7 +4,11 @@ def deep_dup(arr)
             if x.is_a? Array
               deep_dup(x)
             else
-              y = x
+              if x.is_a?(Fixnum)
+                y=x
+              else
+                x.dup
+              end
             end
   end
 
@@ -21,3 +25,10 @@ end
 
 test([1,2, "d", ["d", "aaaa"], [3,4]])
 # test()
+
+
+array1 = [1,2, "d", ["d", "aaaa"], [3,4]]
+array2 = deep_dup(array1)
+
+puts array1[3][1].object_id
+puts array2[3][1].object_id
