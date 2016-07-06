@@ -7,15 +7,14 @@ class Tweeter
   end
 
   def tweet(message)
-    @tweets.push message
+    @tweets.push message[0, 144]
   end
 
   def each(&block)
-    @tweets.to_enum
-    loop do
-      &block.call(@tweets)
-      @tweets.next
-    end 
+    enum = @tweets.to_enum
+    enum.each do |y|
+      block.call(y)
+    end
   end
 
 end
