@@ -1,0 +1,9 @@
+class Tweeter
+  def initialize
+    @tweets = []
+  end
+
+  def tweet(message)
+    
+  end
+end
