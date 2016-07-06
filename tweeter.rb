@@ -2,6 +2,8 @@
 
 #Tweeter is a wrapper around array of tweets
 class Tweeter
+  include Enumerable
+
   def initialize
     @tweets = []
   end
@@ -16,14 +18,16 @@ class Tweeter
     @tweets.each {|item| yield item}
   end
 
-  
 
 
 
 end
 
-t = Tweeter.new()
+t = Tweeter.new
 t.tweet("first message")
 t.tweet("second message")
 
 t.each{|msg| puts msg}
+
+rap = t.map{|msg| msg.upcase}
+puts rap
