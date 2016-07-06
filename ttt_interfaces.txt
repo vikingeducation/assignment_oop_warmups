@@ -1,0 +1,37 @@
+class TicTacToe
+    
+    def initialize
+    def play
+    def check_game_over
+    def check_victory
+    def check_draw
+    def switch_players
+
+
+
+class Player
+   variables (read and write): name, piece
+
+  
+    def initialize
+    def get_coordinates
+    def ask_for_coordinates
+    def validate_coordinates_format
+ 
+class Board
+
+    variables (read): board_arr
+    def initialize
+    def render
+    def add_piece(coords, piece)
+    def piece_location_valid?
+    def within_valid_coordinates?
+    def coordinates_available?
+    def winning_combination?(piece)
+    def winning_vertical?(piece)
+    def winning_horizontal?(piece)
+    def diagonals
+    def verticals
+    def horizontals
+    def full?
+  
