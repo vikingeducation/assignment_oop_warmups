@@ -15,5 +15,4 @@
      return false if !self.all? { |x| !(x.is_a? Array) }
      true
    end
-
  end
