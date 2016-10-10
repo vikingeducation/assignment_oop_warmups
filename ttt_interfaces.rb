@@ -96,7 +96,7 @@ end
 
 # Manages all player-related functionality
 class Player
-    attr_reader :name, :piece, :board
+    attr_reader :name, :piece
 
     # initialize
     def initialize(name = "Mystery_Player", piece, board)
