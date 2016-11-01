@@ -1,0 +1,31 @@
+Class: TicTacToe
+  play
+  check_game_over
+  switch_players
+  check_victory
+  check_draw
+
+Class: Player (name, piece, board)
+  name
+  name=(str)
+  get_coordinates
+  piece
+  piece=(symbol)
+  ask_for_coordinates
+  validate_coordinates_format(arr)
+  
+Class: Board (arr)
+  board_arr
+  render
+  full?
+  add_piece(arr, symbol)
+  piece_location_valid?(arr)
+  within_valid_coordinates?(arr)
+  coordinates_available?(arr)
+  winning_combination?(symbol)
+  winning_diagonal?(symbol)
+  winning_horizontal?(symbol)
+  winning_vertical?(symbol)
+  diagonals
+  verticals
+  horizontals
