@@ -2,7 +2,7 @@ class Tweeter
 
   include Enumerable
 
-  def initalize
+  def initialize
     @tweets = ["hey", "hi", "wbatsup"]
   end
 
