@@ -1,60 +1,47 @@
+require 'pry'
+
 class Array
 
   def deep_dup
-    # Create a new array
-    output = []
+
     # loop over each item in outter most array
-    each do |item|
-      output << recurse(item)
-
-    end
-    output
-  end
-
-  def recurse(item)
-    new_output = []
-    # if the class of this item in an array
-
-    if item.is_a?(Array)
-      item.each do |i|
-        # then recurse
-        recurse(i)
+    map do |item|
+      # if item is an array
+      if item.is_a?(Array)
+        item.deep_dup
+      else
+        item
       end
-    else
-      # otherwise dup that item
-      # push it to a new array
-      new_item = item
-      # return that new array
-      new_output << new_item
     end
-    new_output
-  end
 
+  end
 
 end
 
-arr = [[1,2],[3,4]]
-p arr
-puts arr.object_id
 
-puts ""
+# deeper_arr = [
+#                 [ 1, [ 2, 3 ] ],
+#                 [ 4, 5, 6],
+#                 [ [ 7, 8, [ 9, 10 ]], [11, 12] ],
+#             ]
 
-duper = arr.deep_dup
-p duper
-puts duper.object_id
+# p deeper_arr
+# p deeper_arr.object_id
+# p deeper_arr[0].object_id
+# p deeper_arr[0][1].object_id
+# p deeper_arr[1].object_id
 
-# [[1, 2], [3, 4]]
-# 4631340
-#
-# [[], []]
-# 4624060
+# puts ""
+# duper = deeper_arr.deep_dup
+
+# p duper
+# p duper.object_id
+# p duper[0].object_id
+# p duper[0][1].object_id
+# p duper[1].object_id
+
+# duper = []
+# p deeper_arr
 
 
 
-
-
-deeper_arr = [
-                [ 1, [ 2, 3 ] ],
-                [ 4, 5, 6],
-                [ [ 7, 8, [ 9, 10 ]], [11, 12] ],
-            ]
