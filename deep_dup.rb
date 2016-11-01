@@ -1,17 +1,6 @@
 class Array
 
   def deep_dup
-    # duper = []
-    # # iterate through outter array
-    # self.each do |item|
-    #   if item.is_a?(Array)
-    #     item.deep_dup
-    #   else
-    #     duper << item
-    #   end
-    # end
-    # duper
-
     self.map do |item|
       if item.is_a?(Array)
         item.deep_dup
