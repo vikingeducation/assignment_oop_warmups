@@ -1,11 +1,24 @@
-def deep_dup(multi_d_arr)
-	new_arr = multi_d_arr.dup
+class Array
 
-	arr_to_check = new_arr # new_arr.dup
-	while arr_to_check[0].class == Array
-		arr_to_check.map! do |element|
-			element.dup
-		end
-		arr_to_check = arr_to_check[0]
-	end
+  def deep_dup
+    self.map do |element|
+      next unless element.class == Array
+      element.deep_dup
+    end
+
+  end
+
 end
+
+
+a = [[[1]]]
+
+new_a = a.deep_dup
+
+puts a.object_id
+
+puts new_a.object_id
+
+puts a[0][0].object_id
+
+puts new_a[0][0].object_id
