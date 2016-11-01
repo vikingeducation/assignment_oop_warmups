@@ -1,17 +1,13 @@
-def deep_dup(base_array)
-  new_array = base_array.dup
-  base_array.each_with_index do |item, index|
-    if item.is_a?(Array)
-      deep_dup(item)
-    else 
-      new_array << base_array.dup
+class Array
+  def deep_dup
+    self.map do |item|
+      if item.is_a?(Array)
+        item.deep_dup
+      else
+        item
+      end
     end
   end
-  print "this is a separate instance \n"
-  print new_array
-  print "\n"
-  print base_array
 end
 
-deep_dup([[1,2],[3,[4]]])
-
+[1,[2,3]].deep_dup
