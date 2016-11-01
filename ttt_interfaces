@@ -1,0 +1,33 @@
+TicTacToe
+  def initialize, call: TicTacToe.new
+  def play, call: TicTacToe#play
+  def check_game_over, call: TicTacToe#check_game_over
+  def check_victory, call: TicTacToe#check_victory
+  def check_draw, call: TicTacToe#check_draw
+  def switch_players, call: TicTacToe#switch_players
+
+Player
+  def initialize, call: Player.new
+  def get_coordinates, call: Player#get_coordinates
+  def ask_for_coordinates, call: Player#ask_for_coordinates
+  def validate_coordinance_format(coords), call: Player#validate_coordinance_format(coords)
+  def name, call: Player#name
+  def name=, call: Player#name = [new_name]
+  def piece, call: Player#piece
+  def piece=, call: Player#piece = [new_piece]
+
+Board
+  def board_arr, call: Board#board_arr
+  def initialize, call: Board.new
+  def render, call: Board#render
+  def add_piece(coords, piece), call: Board#add_piece(coords, piece)
+  def piece_location_valid?(coords), call: Board#piece_location_valid?(coords)
+  def within_valid_coordinates?(coords), call: Board#within_valid_coordinates?(coords)
+  def coordinates_available?(coords), call: Board#coordinates_available?(coords)
+  def winning_combination?(piece), call: Board#winning_combination?(piece)
+  def winning_diagonal?(piece), call: Board#winning_diagonal?(piece)
+  def winning_vertical?(piece), call: Board#winning_vertical?(piece)
+  def winning_horizontal?(piece), call: Board#winning_horizontal?(piece)
+  def verticals, call Board#verticals
+  def horizontals, call Board#horizontals
+  def full?, call Board#full?
