@@ -1,6 +1,6 @@
 class Mastermind
   #initialize
-  def initialize
+  def initialize(player)
     win_condition = false
     @current_turn = 1
     total_turns = 12
