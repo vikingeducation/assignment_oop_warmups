@@ -4,8 +4,10 @@ class Array
     self.map do |item|
       if item.is_a?(Array)
         item.deep_dup
-      else
+      elsif item.is_a?(Fixnum)
         item
+      else
+        item.dup # item.dup rescue item
       end
     end
   end

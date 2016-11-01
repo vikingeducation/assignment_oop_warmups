@@ -1,8 +1,11 @@
 #ttt interfaces
 
+# go thru public interface
+# public_methods
+
+
 class TicTacToe
 
-  initialize
   play
   check_game_over
   check_victory
@@ -13,8 +16,8 @@ class TicTacToe
 class Player
   :name, :piece   #from attr_accessor
 
-  name=()         #from attr_accessor
-  initialize
+  name=         #from attr_accessor
+  piece=
   get_coordinates
   ask_for_coordinates
   validate_coordinates_format
@@ -22,7 +25,7 @@ class Player
 
 class Board
 
-  initialize
+  board_arr
   render
   add_pieces
   piece_location_valid?
