@@ -1,7 +1,19 @@
-# mastermind class
+class Mastermind
   #initialize
-    #win = false
-    #turns = 12
+  def initialize
+    win_condition = false
+    @current_turn = 1
+    total_turns = 12
+
+    instructions
+  end
+
+  def instructions
+    puts "Welcome to Mastermind!"
+    puts "You have 12 turns to guess the 4 color code."
+    puts "There are 6 possible colors: Red, Green, Blue, Yellow, Purple, Orange."
+    puts "Enter your guesses in the format 'r g b y.'"
+  end
 
   # play
     # turn counter that increments
@@ -12,14 +24,40 @@
     # codebreaker input == secret
   # check_loss
     # number_of_turns == 12
+end
 
-# codebreaker class
+class Codebreaker
   #initialize
-    #codebreaker_input = ""
+  def initialize
+    input = []
+
+    get_input(input)
+  end
+
+  # get input
+  def get_input(input)
+    input = prompt
+
+    is_valid?(input)
+  end
 
   # prompt for input
-  # get input
+  def prompt
+    puts "Please enter guess # #{@current_turn} (ex: 'r g b y'):"
+    gets.strip.split(" ")
+  end
+
   # confirming input format
+  def is_valid?(input)
+    if input.all? { |color| Secret::COLORS.include?(color) } && input.length == 4
+      true
+    else
+      puts "Invalid input, please use the format 'r g b y.'"
+      get_input(input)
+    end
+  end
+end
+
 
 # board/render class
   #initialize
@@ -35,28 +73,27 @@
 
 
 
-# secret (computer) class
+class Secret
+  COLORS = %W[r g b y p o]
+
   #initialize
   def initialize
-    # string colors (in constant)
-    COLORS = %q[r g b y p o]
-    #secret
-    secret = []
+#     # string colors (in constant)
+#     #secret
+#     secret = []
   end
 
-  # user input for secret
-  def create_secret
-    4.times { |item| secret[item] = COLORCONSTANT.sample }
-  end
+#   # user input for secret
+#   def create_secret
+#     4.times { |item| secret[item] = COLORS.sample }
+#   end
 
+#   # confirm correct colors
+#   def check_colors
+#     COLORS.include?(input) # UNFINISHED
+#   end
 
-  # confirm correct colors
-  # "close" and "exact" peg logic
+#   # "close" and "exact" peg logic
+end
 
-
-
-
-
-# Codebreaker or Codemaker?
-# > Codebreaker
-# m = Mastermind.new(Codebreaker)
+m = Mastermind.new(Codebreaker.new)
