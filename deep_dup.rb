@@ -7,7 +7,7 @@ class Array
       elsif item.is_a?(Fixnum)
         item
       else
-        item.dup # item.dup rescue item
+        item.dup
       end
     end
   end
