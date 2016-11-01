@@ -1,28 +1,25 @@
 class Array
 
 	def deep_dup
-		new_arr = []
-		self.each do |item| # self = [1,2,[3,4],5]
+		new_arr = self.dup
+		new_arr.each_with_index do |item, index| # self = [1,2,[3,4],5]
 			if item.class == Array
-        puts "array"
-        new_arr << item.dup
-      else
-        puts "not an array"
-			  new_arr << item
+        new_arr[index] = item.deep_dup
       end
 		end
+    new_arr
 	end
 
 end
 
-arr = [1,2,[[3],4],5]
+arr = [ [ 1, [ 2, 3 ] ],[ 4, 5, 6],[ [ 7, 8, [ 9, 10 ]], [11, 12] ]]
 test_arr = arr.deep_dup
 
-puts arr.object_id
-puts test_arr.object_id
-
-puts arr[2].object_id
-puts test_arr[2].object_id
-
-puts arr[2][0].object_id
-puts test_arr[2][0].object_id
+# puts arr.object_id
+# puts test_arr.object_id
+# puts "----------------"
+# puts arr[2].object_id
+# puts test_arr[2].object_id
+# puts "-----------"
+# puts arr[2][0].object_id
+# puts test_arr[2][0].object_id
