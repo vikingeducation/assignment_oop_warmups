@@ -1,7 +1,7 @@
 class TicTacToe
     # initialize
     attr_reader :player_x, :player_y
-    attr_accessor :current_player, :board
+    attr_accessor :current_player
 
     def initialize
         # set up the board
@@ -13,7 +13,7 @@ class TicTacToe
 
         # assign the starting player
         @current_player = @player_x
-    end
+      end
 
     # play
     def play
@@ -31,15 +31,15 @@ class TicTacToe
 
             # switch players
             switch_players
+          end
         end
-    end
-private
+        private
     # check_game_over?
     def check_game_over
         # check for victory
         # check for draw
         check_victory || check_draw
-    end
+      end
 
     # check_victory?
     def check_victory
@@ -49,10 +49,10 @@ private
             # then output a victory message
             puts "Congratulations #{@current_player.name}, you win!"
             true
-        else
-            false
+          else
+          	false
+          end
         end
-    end
 
     # check_draw?
     def check_draw
@@ -61,26 +61,26 @@ private
             # display draw message
             puts "Bummer, you've drawn..."
             true
-        else
-            false
+          else
+          	false
+          end
         end
-    end
 
     # switch_players
     def switch_players
-        if @current_player == @player_x
-            @current_player = @player_y
-        else
-            @current_player = @player_x
-        end
+    	if @current_player == @player_x
+    		@current_player = @player_y
+    	else
+    		@current_player = @player_x
+    	end
     end
 
-end
+  end
 
 
 # Manages all player-related functionality
 class Player
-    attr_accessor :name, :piece
+	attr_accessor :name, :piece
 
     # initialize
     def initialize(name = "Mystery_Player", piece, board)
@@ -89,7 +89,7 @@ class Player
         @name = name
         @piece = piece
         @board = board
-    end
+      end
 
     # get_coordinates
     def get_coordinates
@@ -104,33 +104,33 @@ class Player
                 if @board.add_piece(coords, @piece)
                     # break the loop
                     break
+                  end
                 end
+              end
             end
-        end
-    end
 
-private
+            private
     # ask_for_coordinates
     def ask_for_coordinates
         # Display message asking for coordinates
         puts "#{@name}(#{@piece}), enter your coordinates in the form x,y:"
         # pull coordinates from command line
         gets.strip.split(",").map(&:to_i)
-    end
+      end
 
     # validate_coordinates_format
     def validate_coordinates_format(coords)
         # UNLESS coordinates are in the proper format
         if coords.is_a?(Array) && coords.size == 2
-            true
+        	true
         else
             # display error message
             # Note that returning `nil` acts falsy!
             puts "Your coordinates are in the improper format!"
+          end
         end
-    end
 
-end
+      end
 
 
 # Maintains game board state
@@ -139,42 +139,40 @@ class Board
     def initialize
         # set up blank data structure
         @board = Array.new(3){Array.new(3)}
-    end
+      end
 
     # render
     def render
-        puts
+    	puts
         # loop through data structure
         @board.each do |row|
-            row.each do |cell|
+        	row.each do |cell|
                 # display an existing marker if any, else blank
                 cell.nil? ? print("-") : print(cell.to_s)
+              end
+              puts
             end
             puts
-        end
-        puts
 
-    end
+          end
 
     # full?
     def full?
         # does every square contain a piece?
         @board.all? do |row|
-            row.none?(&:nil?)
+        	row.none?(&:nil?)
         end
-    end
+      end
 
 # winning_combination?
-    def winning_combination?(piece)
+def winning_combination?(piece)
         # is there a winning_diagonal?
         # or winning_vertical? 
         # or winning_horizontal? for that piece?
         winning_diagonal?(piece)   || 
         winning_horizontal?(piece) || 
         winning_vertical?(piece)
-    end
-
-private
+      end
 
     # add_piece
     def add_piece(coords, piece)
@@ -183,10 +181,12 @@ private
             # place piece
             @board[coords[0]][coords[1]] = piece
             true
-        else
-            false
+          else
+          	false
+          end
         end
-    end
+
+        private
 
     # piece_location_valid?
     def piece_location_valid?(coords)
@@ -194,78 +194,78 @@ private
         if within_valid_coordinates?(coords)
             # Are the piece coordinates_available?
             coordinates_available?(coords)
+          end
         end
-    end
 
     # within_valid_coordinates?
     def within_valid_coordinates?(coords)
         # UNLESS piece coords are in the acceptible range
         if (0..2).include?(coords[0]) && (0..2).include?(coords[1])
-            true
+        	true
         else
             # display an error message
             puts "Piece coordinates are out of bounds"
+          end
         end
-    end
 
     # coordinates_available?
     def coordinates_available?(coords)
         # UNLESS piece coords are not occupied
         if @board[coords[0]][coords[1]].nil?
-            true
+        	true
         else
             # display error message
             puts "There is already a piece there!"
+          end
         end
-    end
 
     # winning_diagonal?
     def winning_diagonal?(piece)
         # check if specified piece has a triplet across diagonals
         diagonals.any? do |diag|
-            diag.all?{|cell| cell == piece }
+        	diag.all?{|cell| cell == piece }
         end
-    end
+      end
 
     # winning_vertical?
     def winning_vertical?(piece)
         # check if specified piece has a triplet across verticals
         verticals.any? do |vert|
-            vert.all?{|cell| cell == piece }
+        	vert.all?{|cell| cell == piece }
         end
-    end
+      end
 
     # winning_horizontal?
     def winning_horizontal?(piece)
         # check if specified piece has a triplet across horizontals
         horizontals.any? do |horz|
-            horz.all?{|cell| cell == piece }
+        	horz.all?{|cell| cell == piece }
         end
-    end
+      end
 
     # diagonals
     def diagonals
         # return the diagonal pieces
         [[ @board[0][0],@board[1][1],@board[2][2] ],[ @board[2][0],@board[1][1],@board[0][2] ]]
-    end
+      end
 
     # verticals
     def verticals
         # return the vertical pieces
         @board
-    end
+      end
 
     # horizontals
     def horizontals
         # return the horizontal pieces
         horizontals = []
         3.times do |i|
-            horizontals << [@board[0][i],@board[1][i],@board[2][i]]
+        	horizontals << [@board[0][i],@board[1][i],@board[2][i]]
         end
         horizontals
+      end
+
     end
 
-end
-
-t = TicTacToe.new
-t.play
+    t = TicTacToe.new
+    t.play
