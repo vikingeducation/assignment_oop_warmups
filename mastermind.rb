@@ -1,18 +1,29 @@
-# codebreaker class
-  # prompt for input
-  # confirming input format
-
 # mastermind class
+  #initialize
+    #win = false
+    #turns = 12
+
   # play
     # turn counter that increments
     # unless win_condition
       # execute play
+      # call render class
   # check_win
     # codebreaker input == secret
   # check_loss
     # number_of_turns == 12
 
+# codebreaker class
+  #initialize
+    #codebreaker_input = ""
+
+  # prompt for input
+  # get input
+  # confirming input format
+
 # board/render class
+  #initialize
+    # create initial []
   # nested array of previous turns
   # displays close and exact pegs
   # what it looks like
@@ -25,11 +36,20 @@
 
 
 # secret (computer) class
-  # create_secret
-    # user input for secret
-    # 4.times { COLORCONSTANT.sample }
+  #initialize
+  def initialize
+    # string colors (in constant)
+    COLORS = %q[r g b y p o]
+    #secret
+    secret = []
+  end
 
-  # string colors (in constant)
+  # user input for secret
+  def create_secret
+    4.times { |item| secret[item] = COLORCONSTANT.sample }
+  end
+
+
   # confirm correct colors
   # "close" and "exact" peg logic
 
