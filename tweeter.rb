@@ -18,7 +18,7 @@ end
 t = Tweeter.new
 
 t.tweet("hello!")
-t.tweet("horld!")
+t.tweet("world!")
 
 puts t.map{|msg| msg.upcase}
 t.each{|msg| print msg}
