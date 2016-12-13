@@ -1,0 +1,30 @@
+Class: Player
+	name								# from the attr_accessor
+	name=(new_value)					# from the attr_accessor
+	piece								# from the attr_accessor
+	piece=(new_value)					# from the attr_accessor
+	get_coordinates						# public method
+	ask_for_coordinates					# public method
+	validate_coordinates_format(coords)	# public method
+
+Class: Board
+	render								# public method
+	add_piece(coords, piece)			# public method
+	piece_location_valid?(coords)		# public method
+	within_valid_coordinates?(coords)	# public method
+	coordinates_available?(coords)		# public method
+	winning_combination?(piece)			# public method
+	winning_diagonal?(piece)			# public method
+	winning_vertical?(piece)			# public method
+	winning_horizontal?(piece)			# public method
+	diagonals							# public method
+	verticals							# public method
+	horizontals							# public method
+	full?								# public method
+
+Class: TicTacToe
+	play								# public method
+	check_game_over						# public method
+	check_victory						# public method
+	check_draw							# public method
+	switch_players						# public method
