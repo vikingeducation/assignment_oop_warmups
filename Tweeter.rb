@@ -8,8 +8,10 @@ class Tweeter
     @tweets << message[0...144]
   end
 
-  def each
-    @tweets.each { |n| yield(n) }
+  def each(prock=nil)
+    @tweets.each do  |n|
+      block_given? ? yield(n) : prock.call(n)
+    end
   end
 
 end
