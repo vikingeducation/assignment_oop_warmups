@@ -1,13 +1,4 @@
-# A note about comments -- 
-# this is more commented than typical because
-# the demo is meant to show how pseudo-code
-# becomes Ruby code.
-# Many of these comments should be deleted.
-
-# Note about Privacy: We haven't made things
-# private here which should be (which is 
-# basically everything except `play`) in order
-# to show off writing tests for those methods.
+# Notes for a TicTacToe interface
 Class: TicTacToe
 
     # initialize
@@ -26,6 +17,7 @@ Class: TicTacToe
     # play
     play
 
+private
     check_game_over
 
     check_victory
@@ -58,7 +50,9 @@ Class: Player
 
     # ask_for_coordinates
     def ask_for_coordinates
-  
+
+
+  private
     # validate_coordinates_format
     def validate_coordinates_format(coords)
     
@@ -86,7 +80,9 @@ Class: Board
 
     # add_piece
     add_piece(coords, piece)
-     
+    
+    private
+
     # piece_location_valid?
     piece_location_valid?(coords)
 
@@ -123,7 +119,3 @@ Class: Board
     
 
 end
-
-# Script to run the game on load
-# t = TicTacToe.new
-# t.play
