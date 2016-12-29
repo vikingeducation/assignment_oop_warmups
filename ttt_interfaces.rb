@@ -15,10 +15,10 @@ end
 
 # Manages all player-related functionality
 Class: Player
-    name
-    name=(value)
-    piece
-    piece=(value)
+    name                                    # from the attr_reader
+    name=(value)                            # from the attr_accessor
+    piece                                   # from the attr_reader
+    piece=(value)                           # from the attr_accessor
 
     get_coordinates
     ask_for_coordinates
@@ -32,7 +32,7 @@ end
 # Maintains game board state
 Class: Board
 
-    board_arr
+    board_arr                              # from the attr_reader
 
     render
     add_piece(coords, piece)
