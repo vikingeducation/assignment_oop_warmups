@@ -5,7 +5,7 @@ class Tweeter
   end
 
   def tweet(message)
-    @tweets << message[0...144]
+    @tweets << message[0..144]
   end
 
   def each(prock=nil)
