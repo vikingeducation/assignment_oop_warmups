@@ -1,16 +1,8 @@
-def first(arr)
-  arr[0]
-end
-
-def rest(arr)
-  arr[1..-1]
-end
-
 def deep_dup(arr)
   if arr.empty?
     return []
-  elsif first(arr).is_a?(Array)
-    return deep_dup(first(arr)) + deep_dup(rest(arr))
+  elsif arr.first.is_a?(Array)
+    return deep_dup(arr.first) + deep_dup(arr[1..-1])
   else
     return [arr.dup]
   end
