@@ -1,17 +1,17 @@
 class Tweeter
-    include Enumerable
+  include Enumerable
 
-    def initialize
-        @tweets = []
-    end
+  def initialize
+    @tweets = []
+  end
 
-    def tweet(message)
-        @tweets << message[0..143]
-    end
+  def tweet(message)
+    @tweets << message[0..143]
+  end
 
-    def each
-      (@tweets.length).times {|i| yield @tweets[i]}
-    end
+  def each
+    (@tweets.length).times {|i| yield @tweets[i]}
+  end
 end
 
 t = Tweeter.new

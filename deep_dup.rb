@@ -1,7 +1,7 @@
 class Array
-	def deep_dup
-	  self.map { |item| item.is_a?(Array) ? item.deep_dup : item }
-	end
+  def deep_dup
+    self.map { |item| item.is_a?(Array) ? item.deep_dup : item }
+  end
 end
 
 arr = [[1, 2], [3, 4]]
