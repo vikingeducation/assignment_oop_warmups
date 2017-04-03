@@ -1,8 +1,9 @@
-def deep_dup(arr)
-	puts arr.object_id.inspect
-puts 	arr.dup.object_id.inspect
-puts arr[0].object_id
+class Array
+  def deep_dup(arr)
+	  arr.map do |element|
+		  if element.is_a?(Array)
+			  element.deep_dup
+		  end
+	  end
+  end
 end
-
-
-deep_dup([1,2,3,4])
