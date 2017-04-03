@@ -9,15 +9,13 @@ class Tweeter
     @tweets << message[0..144]
   end
 
-  def each
-    current_index = 0
-    until @tweets.length == current_index
+  def each(proc=nil)
+    @tweets.each do |item|
       if block_given?
-        yield @tweets[current_index]
+        yield(item)
       else
-        @tweets[current_index]
+        proc.call(item)
       end
-      current_index += 1
     end
   end
 
