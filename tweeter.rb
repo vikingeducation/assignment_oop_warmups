@@ -1,15 +1,33 @@
 class Tweeter
+  include Enumerable
+
   def initialize
     @tweets = []
   end
 
   def tweet(message)
-    p message[0,143]
+    @tweets << message[0,143]
   end
+
+  def each
+    @tweets.each do |tweet|
+      yield(tweet)
+    end
+  end
+
 end
 
-post = Tweeter.new
 message1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tristique justo. Aenean id pulvinar nunc. Nullam iaculis venenatis ante vel aENDmsan. Cras molestie ut ligula non venenatis."
-message2 = "Cras molestie ut ligula non venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tristique justo. Aenean id pulvinar nEND. Nullam iaculis venenatis ante vel accumsan."
+message2 = "Cras molestie ut ligula non venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tristique justo. Aenean id pulvinar nEND nullam iaculis venenatis ante vel accumsan."
 
-post.tweet(message1)
+bot = Tweeter.new
+
+bot.tweet(message1)
+bot.tweet(message2)
+
+bot.each {|msg| puts msg}
+bot.map {|msg| puts msg.upcase}
+
+
+
+
