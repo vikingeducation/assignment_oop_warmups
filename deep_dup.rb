@@ -1,3 +1,6 @@
+# Goes one more level
+# For infinite levels, see infinite_deep_dup.rb
+
 def deep_dup(orig_arr)
   duped_arr = orig_arr.dup
   duped_arr.map(&:dup)
