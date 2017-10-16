@@ -1,9 +1,9 @@
 #  Object Oriented Ruby Warmups
 
 A series of exercises designed to get your object-oriented muscles working properly.
-ttt_interfaces.md - lists public interfaces in the tic_tac_toe.rb
-tweeter.rb - draft of an application that keeps track of "Tweets" which will later be sent by using the Twitter API. 
-deep_dup.rb - returns a completely new object on a 2-or-more dimensional array. Created Array class method. It can be checked in 'pry' or 'irb' as follows:
+* ttt_interfaces.md - lists public interfaces in the tic_tac_toe.rb
+* tweeter.rb - draft of an application that keeps track of "Tweets" which will later be sent by using the Twitter API.
+* deep_dup.rb - returns a completely new object on a 2-or-more dimensional array. Created Array class method. It can be checked in 'pry' or 'irb' as follows:
 ## Getting Started
 ```
 $ ruby deep_dup.rb
