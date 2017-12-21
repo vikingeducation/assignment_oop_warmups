@@ -24,15 +24,10 @@ puts "\nid of 1st value in 1st array in super_base is #{super_base[0][0].object_
 public
 def deep_dup(array)
   dupped = []
-    array.each do |value|
-      dupped << value.dup
-    end
-      dupped.each do |item|
-        deep_dup(item) if item.is_a?(Array)
-      end
-      flipped = dupped.reverse
-      new_thing = flipped.reverse
-      new_thing
+  array.each do |value|
+    dupped << value.dup
+  end
+  dupped
 end
 
 dupe = deep_dup(base)
