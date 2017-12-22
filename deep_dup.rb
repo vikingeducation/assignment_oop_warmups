@@ -13,13 +13,11 @@ a = [
        [ [ 7, 8, [ 9, 10 ]], [11, 12] ],
     ]
 
-=begin
-b = [ [ "red" ],
-      "blue",
-      "green",
-      [ 1, [ 2 ], 3 ]
+b = [  [ "red" ],
+       "blue",
+       "green",
+       [ 1, [ 2 ], 3 ]
     ]
-=end
 
 public
 def deep_dup
@@ -33,7 +31,7 @@ def deep_dup
 end
 
 c = a.deep_dup
-#d = b.deep_dup
+d = b.deep_dup
 
 binding.pry
 
