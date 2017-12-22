@@ -10,7 +10,7 @@ require "pry"
 a = [
        [ 1, [ 2, 3 ] ],
        [ 4, 5, 6],
-       [ [ 7, 8, [ 9, 10 ]], [11, 12] ],
+       [ [ 7, 8, [ 9, 10 ] ], [11, 12] ]
     ]
 
 b = [  [ "red" ],
@@ -21,13 +21,15 @@ b = [  [ "red" ],
 
 public
 def deep_dup
-  map do |value|
+  dupped = self.dup
+  dupped.map! do |value|
     if value.is_a?(Array)
-      value.dup.deep_dup.dup
+      value.deep_dup
     else
-      value.dup
+      value
     end
   end
+  dupped
 end
 
 c = a.deep_dup
