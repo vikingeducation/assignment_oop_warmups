@@ -7,37 +7,40 @@
 
 require "pry"
 
-base = [ ["red", "blue", "green"], [1, 2, 3] ]
-puts "\nbase's id is #{base.object_id}"
-puts "\nid of 1st value in base is #{base[0].object_id}"
-puts "\nid of 1st value in 1st array in base is #{base[0][0].object_id}"
+a = [
+       [ 1, [ 2, 3 ] ],
+       [ 4, 5, 6],
+       [ [ 7, 8, [ 9, 10 ]], [11, 12] ],
+    ]
 
-super_base = [
-                [ 1, [ 2, 3 ] ],
-                [ 4, 5, 6],
-                [ [ 7, 8, [ 9, 10 ]], [11, 12] ],
-             ]
-puts "\nsuper_base's id is #{super_base.object_id}"
-puts "\nid of 1st value in super_base is #{super_base[0].object_id}"
-puts "\nid of 1st value in 1st array in super_base is #{super_base[0][0].object_id}"
+=begin
+b = [ [ "red" ],
+      "blue",
+      "green",
+      [ 1, [ 2 ], 3 ]
+    ]
+=end
 
 public
-def deep_dup(array)
-  dupped = []
-  array.each do |value|
-    dupped << value.dup
+def deep_dup
+  map do |value|
+    if value.is_a?(Array)
+      value.dup.deep_dup.dup
+    else
+      value.dup
+    end
   end
-  dupped
 end
 
-dupe = deep_dup(base)
-puts "\ndupe of base's id is #{dupe.object_id}"
-puts "\nid of 1st value in base's dupe is #{dupe[0].object_id}"
-puts "\nid of 1st value in 1st array in base's dupe is #{dupe[0][0].object_id}"
-
-duper = deep_dup(super_base)
-puts "\ndupe of super_base's id is #{duper.object_id}"
-puts "\nid of the 1st value in super_base's dupe is #{duper[0].object_id}"
-puts "\nid of 1st value in 1st array in super_base's dupe is #{duper[0][0].object_id}\n"
+c = a.deep_dup
+#d = b.deep_dup
 
 binding.pry
+
+
+
+
+
+
+
+# spacing
