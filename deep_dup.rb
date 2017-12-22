@@ -19,15 +19,9 @@ words = [
 
 public
 def deep_dup
-  dupped = self.clone
-  dupped.map! do |value|
-    if value.is_a?(Array)
-      value.deep_dup
-    else
-      value.dup
-    end
+  map do |value|
+    value.is_a?(Array) ? value.deep_dup : value.dup
   end
-  dupped
 end
 numerals_dupe = numerals.deep_dup
 words_dupe = words.deep_dup
