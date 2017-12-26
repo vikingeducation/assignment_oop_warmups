@@ -1,5 +1,5 @@
 =begin
-(replace with actual description later)
+(TODO replace with actual description later)
 
 Because that class will handle lots of individual tweets, we can assume that
 an instance of Tweeter is really just a wrapper around a collection of these
@@ -21,6 +21,10 @@ Specifically, you should now be able to do the following:
 t = Tweeter.new
 t.each{|msg| puts msg}
 
+# Your TODO: fill this in.
+# This should add the first 144 characters
+# of any message to the @tweets array
+
  require "pry"
  binding.pry
 =end
@@ -31,11 +35,30 @@ class Tweeter
     end
 
     def tweet(message)
-        # Your TODO: fill this in.
-        # This should add the first 144 characters
-        # of any message to the @tweets array
+      if message == [] || message == {}
+        tweet = nil
+      else
+        tweet = message.to_s
+      end
+        if tweet.length > 144
+          tweet = "#{tweet[0..143]}"
+          @tweets << tweet
+          puts "Message reduced to 144 characters"
+        elsif tweet.length < 1
+          puts "Can't make an empty tweet, try again"
+        else
+          @tweets << tweet
+        end
+        puts "Collection of tweets = #{@tweets}"
     end
+
+    def each_instance
+
+    end
+
 end
+
+#twitter = Tweeter.new
 
 
 
