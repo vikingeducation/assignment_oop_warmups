@@ -9,29 +9,30 @@
 
 class Tweeter
   include Enumerable
-    def initialize
-      @tweets = []
-    end
+  
+  def initialize
+    @tweets = []
+  end
 
-    def tweet(message)
-      if message == [] || message == {}
-        tweety = nil
+  def tweet(message)
+    if message == [] || message == {}
+      tweety = nil
+    else
+      tweety = message.to_s
+    end
+      if tweety.length > 144
+        @tweets << tweety[0..143]
+        puts "Message reduced to 144 characters"
+      elsif tweety.length < 1
+        puts "Can't make an empty tweet, try again"
       else
-        tweety = message.to_s
+        @tweets << tweety
       end
-        if tweety.length > 144
-          @tweets << tweety[0..143]
-          puts "Message reduced to 144 characters"
-        elsif tweety.length < 1
-          puts "Can't make an empty tweet, try again"
-        else
-          @tweets << tweety
-        end
-    end
+  end
 
-    def each(proc = nil)
-      @tweets.each { |tweety| block_given? ? yield(tweety) : proc.call(tweety) }
-    end
+  def each(proc = nil)
+    @tweets.each { |tweety| block_given? ? yield(tweety) : proc.call(tweety) }
+  end
 end
 
 t = Tweeter.new
