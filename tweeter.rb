@@ -1,39 +1,16 @@
 =begin
-(TODO replace with actual description later)
-
-Because that class will handle lots of individual tweets, we can assume that
-an instance of Tweeter is really just a wrapper around a collection of these
-tweets.
-
-Instead of making an accessor for @tweets and accessing it directly from
-outside of the Tweeter instance, we can treat the Tweeter instance as a
-collection itself.
-
-To do so, your task is:
-
-1. Define an each instance method on Tweeter which iterates through all the
-tweets inside its @tweets collection.
-
-2. Include the Enumerable module into the Tweeter class. You should now have
-access to all the Enumerable methods directly on any instance of Tweeter.
-Specifically, you should now be able to do the following:
-
-t = Tweeter.new
-t.each{|msg| puts msg}
-
-(tweet method instructions)
-Your TODO: fill this in.
-This should add the first 144 characters
-of any message to the @tweets array
-
- require "pry"
- binding.pry
+   Create a tweeter class to serve as a wrapper for a collection of tweets.
+ It should have a method named tweet to add the first 144 characters of
+ messages to the collection of tweets.
+ Define an each instance method on Tweeter which iterates through all the
+ tweets inside its @tweets collection.
+ Include the Enumerable module into the Tweeter class.
 =end
-require "pry"
 
 class Tweeter
+  include Enumerable
     def initialize
-        @tweets = []
+      @tweets = []
     end
 
     def tweet(message)
@@ -43,8 +20,7 @@ class Tweeter
         tweety = message.to_s
       end
         if tweety.length > 144
-          tweety = "#{tweety[0..143]}"
-          @tweets << tweety
+          @tweets << tweety[0..143]
           puts "Message reduced to 144 characters"
         elsif tweety.length < 1
           puts "Can't make an empty tweet, try again"
@@ -53,18 +29,19 @@ class Tweeter
         end
     end
 
-    def each
-      @tweets.each { |tweety| yield(tweety) }
+    def each(proc = nil)
+      @tweets.each { |tweety| block_given? ? yield(tweety) : proc.call(tweety) }
     end
-
 end
 
 t = Tweeter.new
-t.tweet("fish")
-t.tweet("glove")
-t.tweet("fry")
-t.tweet("valley")
-t.each{|msg| puts msg}
+t.tweet("fISh")
+t.tweet(15)
+t.each{ |msg| puts msg }
+puts t.map{ |msg| msg.upcase }
+t.each( Proc.new { |msg| puts msg.downcase } )
+
+
 
 
 
