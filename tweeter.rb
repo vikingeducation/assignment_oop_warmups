@@ -21,13 +21,15 @@ Specifically, you should now be able to do the following:
 t = Tweeter.new
 t.each{|msg| puts msg}
 
-# Your TODO: fill this in.
-# This should add the first 144 characters
-# of any message to the @tweets array
+(tweet method instructions)
+Your TODO: fill this in.
+This should add the first 144 characters
+of any message to the @tweets array
 
  require "pry"
  binding.pry
 =end
+require "pry"
 
 class Tweeter
     def initialize
@@ -36,29 +38,33 @@ class Tweeter
 
     def tweet(message)
       if message == [] || message == {}
-        tweet = nil
+        tweety = nil
       else
-        tweet = message.to_s
+        tweety = message.to_s
       end
-        if tweet.length > 144
-          tweet = "#{tweet[0..143]}"
-          @tweets << tweet
+        if tweety.length > 144
+          tweety = "#{tweety[0..143]}"
+          @tweets << tweety
           puts "Message reduced to 144 characters"
-        elsif tweet.length < 1
+        elsif tweety.length < 1
           puts "Can't make an empty tweet, try again"
         else
-          @tweets << tweet
+          @tweets << tweety
         end
-        puts "Collection of tweets = #{@tweets}"
     end
 
-    def each_instance
-
+    def each
+      @tweets.each { |tweety| yield(tweety) }
     end
 
 end
 
-#twitter = Tweeter.new
+t = Tweeter.new
+t.tweet("fish")
+t.tweet("glove")
+t.tweet("fry")
+t.tweet("valley")
+t.each{|msg| puts msg}
 
 
 
