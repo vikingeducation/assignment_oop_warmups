@@ -1,2 +1,7 @@
 # assignment_oop_warmups
-Mmmm... modularity..
+
+by Brennan Fulmer
+
+big takeaway from this lesson, .dup/.clone doesn't work on some objects (such as numbers)
+
+also include enumerable is cool
