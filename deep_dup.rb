@@ -1,8 +1,15 @@
 class Object
   def deep_dup
-    puts self.object_id
+    puts "array object ID is #{self.object_id}"
+    (0..self.length - 1).each do |x|
+      puts "array[#{self[x]}] object ID is #{self[x].object_id}"
+    end
+
     copy = Marshal.load(Marshal.dump(self))
-    puts copy.object_id
+    puts "copy object ID is #{copy.object_id}"
+    (0..copy.length - 1).each do |x|
+      puts "array[#{copy[x]}] object ID is #{copy[x].object_id}"
+    end
   end
 end
 
